@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang='pt-BR'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <title>Proposta de Investimento: Eletropostos Inteligentes - O Futuro da Mobilidade</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+            color: #1E293B;
+        }
+
+        /* Paleta de Cores Corporativa e Neutra */
+        .brand-primary { color: #0D6EFD; }
+        .bg-brand-primary { background-color: #0D6EFD; }
+        .border-brand-primary { border-color: #0D6EFD; }
+        .hover-bg-brand-dark:hover { background-color: #0A58CA; }
+        .hover-border-brand-primary:hover { border-color: #0D6EFD; }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover { color: #0D6EFD; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #0D6EFD;
+            transition: width 0.3s ease;
+        }
+        .nav-link.active { color: #0D6EFD; }
+        .nav-link.active::after { width: 100%; }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container { height: 450px; }
+        }
+        
+        .totem-btn.active {
+            background-color: #E7F1FF; /* Azul claro para o botão ativo */
+            border-color: #0D6EFD;
+            transform: scale(1.02);
+            box-shadow: 0 4px 14px rgba(13, 110, 253, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-white/90 backdrop-blur-lg shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <img src="https://placehold.co/200x50/1E293B/FFFFFF?text=SuaMarca" alt="Logomarca do Projeto" class="h-10">
+            </div>
+            <div class="hidden lg:flex space-x-8" id="nav-menu">
+                <a href="#oportunidade" class="nav-link font-semibold text-gray-600 active">Oportunidade</a>
+                <a href="#vantagens" class="nav-link font-semibold text-gray-600">Vantagens</a>
+                <a href="#solucao" class="nav-link font-semibold text-gray-600">Nossa Solução</a>
+                <a href="#midia" class="nav-link font-semibold text-gray-600">Mídia Digital</a>
+                <a href="#valor" class="nav-link font-semibold text-gray-600">ROI</a>
+            </div>
+            <a href="#contato" class="bg-brand-primary text-white font-bold py-2 px-5 rounded-full hover-bg-brand-dark transition-colors shadow-sm">Seja um Parceiro</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="relative bg-white pt-24 pb-16 md:pt-32 md:pb-24">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-gray-800 leading-tight">
+                        Lidere a Revolução da
+                        <span class="brand-primary">Mobilidade Inteligente</span>.
+                    </h1>
+                    <p class="mt-6 text-lg text-gray-600 max-w-xl">
+                        Uma oportunidade de investimento única para instalar Eletropostos de carga rápida, capitalizando em um mercado em crescimento exponencial e associando sua marca à vanguarda da sustentabilidade e tecnologia.
+                    </p>
+                    <a href="#oportunidade" class="mt-8 inline-block bg-brand-primary text-white font-bold py-4 px-10 rounded-full text-lg hover-bg-brand-dark transition-colors shadow-lg hover:shadow-xl">Descubra o Potencial</a>
+                </div>
+                <div class="flex justify-center">
+                    <img src="2.jpeg" alt="Totem de Carregamento DC moderno em um ambiente urbano" class="rounded-2xl shadow-2xl max-w-sm w-full">
+                </div>
+            </div>
+        </section>
+        
+        <section id="oportunidade" class="py-20 md:py-28">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold fade-in">A Onda da Eletrificação: Um Mercado em Crescimento Exponencial</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-gray-600 text-lg fade-in">O mercado de veículos elétricos (VEs) no Brasil é uma realidade consolidada e em aceleração vertiginosa. Liderar essa transformação não é uma opção, é uma decisão estratégica que posiciona sua marca na vanguarda da inovação e atende a uma demanda crescente de um público qualificado e consciente.</p>
+                <div class="mt-16 fade-in">
+                     <div class="chart-container bg-white p-4 sm:p-6 rounded-2xl shadow-lg">
+                        <canvas id="evGrowthChart"></canvas>
+                    </div>
+                    <p class="mt-4 text-sm text-gray-500">Fonte: Dados atualizados da Associação Brasileira do Veículo Elétrico (ABVE), Julho/2025.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="vantagens" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold fade-in">Um Ecossistema de Valor: Vantagens Competitivas e Retorno Garantido</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-gray-600 text-lg fade-in">Este investimento transcende um simples ponto de recarga. Ele cria um ecossistema de valor que fortalece a marca, atrai clientes de alto poder aquisitivo e gera novas e significativas fontes de receita.</p>
+                </div>
+                <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-8 rounded-2xl card-hover fade-in border border-transparent hover-border-brand-primary">
+                        <div class="bg-brand-primary text-white h-14 w-14 rounded-xl flex items-center justify-center">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7.C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z"></path></svg>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold">Liderança de Mercado</h3>
+                        <p class="mt-2 text-gray-600">Posicione sua marca como pioneira na infraestrutura de mobilidade elétrica, associando-a à inovação e visão de futuro.</p>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-2xl card-hover fade-in border border-transparent hover-border-brand-primary" style="transition-delay: 100ms;">
+                        <div class="bg-brand-primary text-white h-14 w-14 rounded-xl flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold">Novas Fontes de Receita</h3>
+                        <p class="mt-2 text-gray-600">Gere receita direta com a cobrança pela recarga e indireta pelo aumento do fluxo de clientes qualificados em seu estabelecimento.</p>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-2xl card-hover fade-in border border-transparent hover-border-brand-primary" style="transition-delay: 200ms;">
+                         <div class="bg-brand-primary text-white h-14 w-14 rounded-xl flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.539 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.539-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold">Diferencial Competitivo</h3>
+                        <p class="mt-2 text-gray-600">Ofereça um serviço exclusivo e de alto valor percebido, criando uma experiência positiva que fideliza clientes e atrai novos.</p>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-2xl card-hover fade-in border border-transparent hover-border-brand-primary" style="transition-delay: 300ms;">
+                         <div class="bg-brand-primary text-white h-14 w-14 rounded-xl flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold">Atração de Clientes Qualificados</h3>
+                        <p class="mt-2 text-gray-600">Atraia um público estratégico (usuários de VEs), de alto poder aquisitivo e alinhado com valores de sustentabilidade e tecnologia.</p>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-2xl card-hover fade-in border border-transparent hover-border-brand-primary" style="transition-delay: 400ms;">
+                         <div class="bg-brand-primary text-white h-14 w-14 rounded-xl flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold">Valorização do Imóvel</h3>
+                        <p class="mt-2 text-gray-600">Transforme sua localização em um ponto de referência para a mobilidade elétrica, agregando valor e visibilidade ao seu negócio ou empreendimento.</p>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-2xl card-hover fade-in border border-transparent hover-border-brand-primary" style="transition-delay: 500ms;">
+                         <div class="bg-brand-primary text-white h-14 w-14 rounded-xl flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.085a2 2 0 00-1.736.97l-2.7 5.4M7 15h5M7 15a2 2 0 01-2-2V8.5a2.5 2.5 0 015 0V12a2 2 0 01-2 2z"></path></svg>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold">Imagem de Marca Positiva</h3>
+                        <p class="mt-2 text-gray-600">Demonstre um compromisso prático com a sustentabilidade, gerando publicidade positiva e fortalecendo a reputação da sua marca.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solucao" class="py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold fade-in">Uma Solução Completa e Turnkey para o Sucesso</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-gray-600 text-lg fade-in">Não entregamos apenas um equipamento. Oferecemos uma solução ponta a ponta, com tecnologia de classe mundial e serviço de excelência, garantindo tranquilidade e o máximo retorno para o seu investimento.</p>
+                </div>
+                <div class="mt-16 grid md:grid-cols-3 gap-8 text-center">
+                    <div class="fade-in">
+                        <div class="flex justify-center">
+                            <div class="bg-white p-5 rounded-full shadow-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold">Tecnologia de Carga Rápida (DC)</h3>
+                        <p class="mt-2 text-gray-600">Nossos totens DC de 60kW a 120kW oferecem uma recarga substancial (até 80%) em 20-40 minutos, maximizando a rotatividade e a receita.</p>
+                    </div>
+                    <div class="fade-in" style="transition-delay: 200ms;">
+                         <div class="flex justify-center">
+                            <div class="bg-white p-5 rounded-full shadow-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>
+                            </div>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold">Design e Mídia Integrada</h3>
+                        <p class="mt-2 text-gray-600">O totem é 100% personalizável com sua identidade visual e possui uma tela de alta definição para se tornar um poderoso canal de marketing e vendas.</p>
+                    </div>
+                    <div class="fade-in" style="transition-delay: 400ms;">
+                         <div class="flex justify-center">
+                            <div class="bg-white p-5 rounded-full shadow-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 20.944A12.02 12.02 0 0012 22a12.02 12.02 0 009-8.056z"></path></svg>
+                            </div>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold">Gestão e Suporte Completo</h3>
+                        <p class="mt-2 text-gray-600">Plataforma de gestão online, monitoramento remoto 24/7 e suporte técnico especializado. Cuidamos de tudo para você focar no seu negócio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="midia" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                 <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold fade-in">Sua Nova e Poderosa Plataforma de Mídia Digital (DOOH)</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-gray-600 text-lg fade-in">O eletroposto é um canal de comunicação de alto impacto. Enquanto o cliente aguarda a recarga, ele interage com sua marca, produtos e serviços de forma positiva e receptiva. Veja o potencial em ação.</p>
+                </div>
+                <div class="mt-16 grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in">
+                        <h3 class="text-2xl font-bold mb-4">Simule a Comunicação com o Cliente:</h3>
+                        <p class="mb-6 text-gray-600">Clique e veja como a tela do totem se torna um canal dinâmico para divulgar produtos, serviços e fortalecer sua marca.</p>
+                        <div class="space-y-3" id="totem-controls">
+                           <button data-content="produto" class="totem-btn w-full text-left p-4 rounded-lg bg-white shadow-md border-2 border-transparent hover-border-brand-primary transition duration-300 active">
+                               <span class="font-bold text-lg brand-primary">Apresente seu Produto Destaque</span>
+                               <span class="block text-gray-600 text-sm">Promova produtos e serviços com alto apelo visual e CTA direto.</span>
+                           </button>
+                           <button data-content="servico" class="totem-btn w-full text-left p-4 rounded-lg bg-white shadow-md border-2 border-transparent hover-border-brand-primary transition duration-300">
+                               <span class="font-bold text-lg brand-primary">Ofereça Benefícios Exclusivos</span>
+                               <span class="block text-gray-600 text-sm">Use o tempo de recarga para oferecer descontos e vantagens especiais.</span>
+                           </button>
+                           <button data-content="institucional" class="totem-btn w-full text-left p-4 rounded-lg bg-white shadow-md border-2 border-transparent hover-border-brand-primary transition duration-300">
+                               <span class="font-bold text-lg brand-primary">Conte a História da sua Marca</span>
+                               <span class="block text-gray-600 text-sm">Mostre o impacto social, a missão e os valores da sua empresa.</span>
+                           </button>
+                           <button data-content="parceiros" class="totem-btn w-full text-left p-4 rounded-lg bg-white shadow-md border-2 border-transparent hover-border-brand-primary transition duration-300">
+                               <span class="font-bold text-lg brand-primary">Monetize com Anúncios</span>
+                               <span class="block text-gray-600 text-sm">Venda espaço publicitário para negócios parceiros e gere receita adicional.</span>
+                           </button>
+                        </div>
+                    </div>
+                    <div class="flex justify-center fade-in" style="transition-delay: 200ms;">
+                        <div class="bg-gray-800 rounded-2xl p-4 w-full max-w-sm shadow-2xl">
+                            <div id="totem-screen" class="bg-black aspect-[9/16] rounded-lg flex flex-col justify-between items-center p-6 text-white text-center transition-all duration-500 overflow-hidden">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="valor" class="py-20 md:py-28">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold fade-in">Retorno Sobre o Investimento (ROI) & Valor Estratégico</h2>
+                 <p class="mt-4 max-w-3xl mx-auto text-gray-600 text-lg fade-in">Mais que um ROI financeiro, o retorno deste projeto se mede em fortalecimento de marca, aquisição de clientes, novas receitas e na consolidação da sua empresa como um player inovador e sustentável.</p>
+                <div class="my-12 fade-in">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+                         <div class="bg-white p-6 rounded-lg shadow-sm fade-in">
+                            <h3 class="font-bold text-lg brand-primary">📢 Branding de Alto Impacto</h3>
+                            <p class="mt-1 text-gray-600">Exposição de marca 24/7 em um ponto nobre, associando sua empresa, na prática, à inovação e sustentabilidade.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm fade-in" style="transition-delay: 150ms;">
+                            <h3 class="font-bold text-lg brand-primary">🎯 Geração de Leads Qualificados</h3>
+                            <p class="mt-1 text-gray-600">Oportunidades de cross-selling e up-selling, além da captação de contatos de um público com alto poder de compra.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm fade-in" style="transition-delay: 300ms;">
+                            <h3 class="font-bold text-lg brand-primary">📈 Engajamento do Cliente</h3>
+                            <p class="mt-1 text-gray-600">O tempo de recarga é uma oportunidade de ouro para comunicar, engajar e educar o cliente sobre seus diferenciais e ofertas.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm fade-in" style="transition-delay: 450ms;">
+                            <h3 class="font-bold text-lg brand-primary">💰 Receita Recorrente</h3>
+                            <p class="mt-1 text-gray-600">Criação de um ativo que gera receita direta (recarga e publicidade) e fortalece o ecossistema do seu negócio principal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="py-20 md:py-28 bg-gray-900 text-white">
+            <div class="container mx-auto px-6 text-center">
+                 <img src="https://placehold.co/240x60/FFFFFF/1E293B?text=SuaMarca" alt="Logomarca do Projeto" class="h-14 mx-auto">
+                <h2 class="text-3xl md:text-5xl font-bold mt-8 fade-in">Vamos Juntos Liderar o Futuro da Mobilidade.</h2>
+                <p class="mt-5 max-w-3xl mx-auto text-lg opacity-90 fade-in">Ao investir em eletropostos, sua empresa não adota apenas uma nova tecnologia: ela assume a liderança de um movimento que define o futuro dos negócios e da sustentabilidade. Estamos prontos para construir este futuro com você.</p>
+                <div class="mt-10 fade-in">
+                    <a href="mailto:parceria@suaempresa.com.br?subject=Proposta de Investimento em Eletropostos" class="inline-block bg-brand-primary text-white font-bold py-4 px-10 rounded-full text-lg hover:scale-105 hover-bg-brand-dark transition-all shadow-2xl">Agende uma Reunião Estratégica</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p>© 2025 | Proposta de Parceria Estratégica em Mobilidade Elétrica.</p>
+            <p class="opacity-70 mt-1">Uma proposta de investimento para empresas visionárias.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observers = [];
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            fadeElements.forEach(el => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                observer.observe(el);
+                observers.push(observer);
+            });
+
+            const totemScreen = document.getElementById('totem-screen');
+            const totemControls = document.getElementById('totem-controls');
+            if(totemControls) {
+                const totemButtons = totemControls.querySelectorAll('.totem-btn');
+
+                const totemContent = {
+                    produto: {
+                        icon: '🚀',
+                        title: 'Inovação que Impulsiona',
+                        text: 'Conheça nosso produto líder de mercado, desenhado para performance e eficiência. A solução ideal para suas necessidades.',
+                        img: 'https://placehold.co/150x40/FFFFFF/1E293B?text=SuaMarca'
+                    },
+                    servico: {
+                        icon: '💎',
+                        title: 'Oferta Exclusiva para Você!',
+                        text: 'Enquanto seu carro carrega, aproveite 20% de desconto em nossos serviços premium. Uma vantagem para clientes como você.',
+                        img: 'https://placehold.co/150x40/FFFFFF/1E293B?text=SuaMarca'
+                    },
+                    institucional: {
+                        icon: '🌍',
+                        title: 'Compromisso com o Futuro',
+                        text: 'Nossas iniciativas de sustentabilidade e responsabilidade social estão transformando comunidades. Saiba mais sobre nosso impacto.',
+                        img: 'https://placehold.co/150x40/FFFFFF/1E293B?text=SuaMarca'
+                    },
+                    parceiros: {
+                        icon: '🤝',
+                        title: 'Anuncie com a Gente',
+                        text: 'Exponha sua marca para um público altamente qualificado. Torne-se um parceiro de mídia e acelere seus resultados.',
+                        img: 'https://placehold.co/150x40/FFFFFF/1E293B?text=SuaMarca'
+                    }
+                };
+
+                function updateTotemScreen(contentKey) {
+                    const content = totemContent[contentKey];
+                    if(totemScreen) {
+                        totemScreen.innerHTML = `
+                        <div class="flex-shrink-0">
+                            <img src="${content.img}" alt="Logo Genérica" class="h-8 mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/150x30/FFFFFF/000000?text=SuaMarca';">
+                        </div>
+                        <div class="flex flex-col items-center justify-center flex-grow p-4">
+                            <div class="text-6xl mb-4">${content.icon}</div>
+                            <h4 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-200 to-white">${content.title}</h4>
+                            <p class="mt-3 text-gray-300 px-2 text-base">${content.text}</p>
+                        </div>
+                        <div class="text-xs text-gray-500 flex-shrink-0 w-full">
+                            <div class="w-full bg-gray-600 rounded-full h-1.5">
+                                <div class="bg-gradient-to-r from-blue-400 to-blue-500 h-1.5 rounded-full" style="width: 82%"></div>
+                            </div>
+                            <span class="mt-2 block">Carregando... 82%</span>
+                        </div>`;
+                    }
+                }
+
+                totemButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        totemButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        
+                        const contentKey = button.getAttribute('data-content');
+                        
+                        // Efeito de transição na tela do totem
+                        totemScreen.style.opacity = '0';
+                        totemScreen.style.transform = 'translateY(10px)';
+                        setTimeout(() => {
+                            updateTotemScreen(contentKey);
+                            totemScreen.style.opacity = '1';
+                            totemScreen.style.transform = 'translateY(0)';
+                        }, 300);
+                    });
+                });
+
+                // Inicializa a tela do totem
+                updateTotemScreen('produto');
+            }
+
+            // --- Configuração do Gráfico ---
+            const ctx = document.getElementById('evGrowthChart');
+            if(ctx) {
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['2021', '2022', '2023', '2024', '2025 (Proj.)'],
+                        datasets: [{
+                            label: 'Vendas de Veículos Elétricos no Brasil',
+                            data: [34990, 49245, 93927, 155000, 240000], // Dados fictícios para projeção
+                            backgroundColor: 'rgba(13, 110, 253, 0.6)',
+                            borderColor: 'rgba(13, 110, 253, 1)',
+                            borderWidth: 2,
+                            borderRadius: 5,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false,
+                            },
+                            title: {
+                                display: true,
+                                text: 'Crescimento Anual de VEs (em unidades)',
+                                font: { size: 16, family: 'Inter' },
+                                color: '#334155'
+                            },
+                            datalabels: {
+                                anchor: 'end',
+                                align: 'top',
+                                color: '#1E293B',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold',
+                                },
+                                formatter: function(value) {
+                                    return (value / 1000).toFixed(0) + 'k';
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: '#E2E8F0'
+                                },
+                                ticks: {
+                                  color: '#64748B'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                  color: '#64748B'
+                                }
+                            }
+                        }
+                    },
+                    plugins: [ChartDataLabels]
+                });
+            }
+        });
+    </script>
+</body>
+</html>
